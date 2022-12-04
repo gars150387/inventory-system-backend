@@ -15,6 +15,7 @@ const {
   loginUser,
   editAdminUser,
   deleteAdminUser,
+  displayAllAdminUser,
 } = require("../controller/admin");
 
 //create admin user
@@ -45,6 +46,9 @@ router.post(
   ],
   loginUser
 );
+
+//render all admin users
+router.get("/admin-user", displayAllAdminUser)
 
 //renovar token
 router.get("/renew", validateJWT, renewToken);

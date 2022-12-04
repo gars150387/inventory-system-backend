@@ -5,22 +5,20 @@ const ItemSchema = Schema({
     type: String,
     required: true,
   },
-  description: {
-    size: {
-      type: Number,
-      required: true,
-    },
-    color: {
-      type: String,
-      required: true,
-    },
-    brand: {
-        type: String,
-    },
-    resume: {
-      type: String,
-      required: true,
-    },
+  size: {
+    type: Number,
+    required: true,
+  },
+  color: {
+    type: String,
+    required: true,
+  },
+  brand: {
+    type: String,
+  },
+  resume: {
+    type: String,
+    required: true,
   },
   cost: {
     type: Number,
