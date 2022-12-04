@@ -1,4 +1,1 @@
-//.env
-
-//mongoDB 
-DBConexion.txt
+node_modules/
