@@ -128,6 +128,29 @@ const displayAllOrders = async (request, response) => {
   }
 }
 
+const deleteItemInStock = async (request, response) => {
+  try {
+    const itemId= await request.params.id;
+    const itemDeleted = await Item.findByIdAndDelete(itemId);
+    if (!itemDeleted) {
+      return response.status(404).json({
+        ok: false,
+        msg: "Item no existe en la base de datos",
+      });
+    }
+    response.status(201).json({
+      ok: true,
+      itemDeleted,
+      msg: "Item eliminado",
+    });
+  } catch (error) {
+    console.log(error);
+    response.status(500).json({
+      ok: false,
+      msg: error,
+    });
+  }
+};
 // const editAdminUser = async (request, response = response) => {
 //   const adminUserId = request.params.id;
 //   try {
@@ -168,29 +191,7 @@ const displayAllOrders = async (request, response) => {
 //   }
 // };
 
-// const deleteAdminUser = async (request, response) => {
-//   try {
-//     const adminUserId = await request.params.id;
-//     const adminUser = await AdminUser.findByIdAndDelete(adminUserId);
-//     if (!adminUser) {
-//       return response.status(404).json({
-//         ok: false,
-//         msg: "Admin user/id do not match",
-//       });
-//     }
-//     response.status(201).json({
-//       ok: true,
-//       adminUser,
-//       msg: "admin user deleted",
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     response.status(500).json({
-//       ok: false,
-//       msg: error,
-//     });
-//   }
-// };
+
 // const renewToken = async (request, response = express.response) => {
 //   const { uid, name } = request;
 
@@ -227,5 +228,6 @@ module.exports = {
   itemAddedToOrder,
   displayCurrentOrder,
   editItemInStock,
+  deleteItemInStock,
   displayAllOrders
 };

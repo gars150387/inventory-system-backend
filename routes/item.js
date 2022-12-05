@@ -9,7 +9,7 @@
  const validateFields = require("../middlewares/validate-field");
  const { validateJWT } = require("../middlewares/validate-jwt");
  
- const { createNewItem, allInventoryList, itemAddedToOrder, displayCurrentOrder, editItemInStock, displayAllOrders } = require("../controller/item");
+ const { createNewItem, allInventoryList, itemAddedToOrder, displayCurrentOrder, editItemInStock, displayAllOrders, deleteItemInStock } = require("../controller/item");
  
  //create admin user
  router.post(
@@ -41,6 +41,9 @@
 
  //edit item in stock
  router.put("/edit-item-quantity/:id", editItemInStock)
+
+ //delete item in stock
+ router.delete("/delete-item/:id", deleteItemInStock)
 
  //display all orders placed
  router.get("/all-orders", displayAllOrders)
